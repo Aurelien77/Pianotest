@@ -2,14 +2,13 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const helmet = require("helmet");
-require("dotenv").config();
-
 app.use(express.json());
 app.use(cors());
 
 const db = require("./models");
 
 global.__basedir = __dirname;
+
 var allowCrossDomain = function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,OPTIONS");
@@ -39,11 +38,6 @@ app.use(
     action: "deny",
   })
 );
-app.use(
-  helmet.frameguard({
-    action: "deny",
-  })
-);
 // Routers
 const postRouter = require("./routes/Posts");
 app.use("/posts", helmet(), postRouter);
@@ -68,7 +62,6 @@ app.use(
   "/images",
   express.static(__dirname + "/ressources/static/assets/uploads")
 );
-
 db.sequelize
   .sync()
   .then(() => {
