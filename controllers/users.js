@@ -5,7 +5,7 @@ const bcrypt = require("bcryptjs");
 exports.login = async (req, res) => {
   const { email, username, password } = req.body;
 
-  const user = await Users.findOne({ where: { email: email } });
+  const user = await Users.findOne({ where: { username: username } });
 
   if (!user) res.json({ error: "L'utilisateur n'existe pas" });
 
@@ -34,10 +34,10 @@ exports.auth = async (req, res) => {
 exports.signup = async (req, res) => {
   const { username, password, email } = req.body;
 
-  const user = await Users.findOne({ where: { email: email } });
+  const user = await Users.findOne({ where: { username: username } });
 
   if (user)
-    res.send({ error: "Cet email est déja utilisé par un autre compte " });
+    res.send({ error: "Cet username est déja utilisé par un autre compte " });
 
   bcrypt.hash(password, 10).then((hash) => {
     Users.create({
