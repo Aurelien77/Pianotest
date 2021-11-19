@@ -19,13 +19,8 @@
     "database": "heroku_e2c2ce977b423f",
     "host": "eu-cdbr-west-01.cleardb.com",
     "dialect": "mysql"
-  },
+  }
 
- /*  "pool": {
-    "max": "dbConfig.pool.max",
-    "min": "dbConfig.pool.min",
-    "acquire": "dbConfig.pool.acquire",
-    "idle": "dbConfig.pool.idle"
-  } */
+
 }
 
