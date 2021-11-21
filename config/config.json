@@ -6,7 +6,6 @@
     "host": "eu-cdbr-west-01.cleardb.com",
     "dialect": "mysql"
   },
-
   "test": {
     "username": "root",
     "password": "root",
@@ -28,7 +27,5 @@
     "acquire": "dbConfig.pool.acquire",
     "idle": "dbConfig.pool.idle"
   }
-
-
 }
 

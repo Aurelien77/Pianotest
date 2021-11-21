@@ -3,29 +3,17 @@ const app = express();
 const cors = require("cors");
 const helmet = require("helmet");
 app.use(express.json());
-app.use(cors());
+
+app.use(
+  cors({
+    origin: "Access-Control-Allow-Origin: *",
+  })
+);
 
 const db = require("./models");
 
 global.__basedir = __dirname;
 
-app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content, Accept, Content-Type, Authorization"
-  );
-  res.setHeader(
-    "Access-Control-Allow-Methods",
-    "GET, POST, PUT, DELETE, PATCH, OPTIONS"
-  );
-  next();
-});
-app.use(
-  helmet.frameguard({
-    action: "deny",
-  })
-);
 // Routers
 const postRouter = require("./routes/Posts");
 app.use("/posts", helmet(), postRouter);
