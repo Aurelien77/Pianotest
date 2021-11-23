@@ -32,6 +32,10 @@ app.use("/postspriv", helmet(), postRouter2);
 
 const commentsRouter = require("./routes/Comments");
 app.use("/comments", helmet(), commentsRouter);
+
+const comments2Router = require("./routes/Comments2");
+app.use("/comments2", helmet(), comments2Router);
+
 const usersRouter = require("./routes/Users");
 app.use("/auth", helmet(), usersRouter);
 const likesRouter = require("./routes/Likes");
