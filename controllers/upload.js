@@ -13,9 +13,9 @@ exports.uploadFiles = async (req, res) => {
     const user = await Users.findOne({
       where: { id: req.params.userId },
     });
-    const ancien_fichier =
+    /* const ancien_fichier =
       __basedir + "/ressources/static/assets/uploads/" + user.photo_profil;
-    fs.unlinkSync(ancien_fichier);
+    fs.unlinkSync(ancien_fichier); */
     Users.update(
       { photo_profil: req.file.filename },
       { where: { id: req.params.userId } }
